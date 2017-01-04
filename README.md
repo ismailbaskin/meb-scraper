@@ -11,7 +11,7 @@ Siz çekeceğim diye uğraşmayın boşuna, çıktılar 2 json dosyasında var z
 
 Resmi kurumların 1.sini gösterelim
 ```bash
-$ curl https://raw.githubusercontent.com/ismailbaskin/meb-scraper/master/resmi_kurumlar.json | jq '.[0]'
+$ curl https://raw.githubusercontent.com/ismailbaskin/meb-scraper/master/resmi_kurumlar.json.gz | gunzip -c | jq '.[0]'
 ```
 çıktısı
 ```json
@@ -30,10 +30,10 @@ $ curl https://raw.githubusercontent.com/ismailbaskin/meb-scraper/master/resmi_k
 
 Kaç resmi kurum var?
 ```bash
-$ curl https://raw.githubusercontent.com/ismailbaskin/meb-scraper/master/resmi_kurumlar.json | jq '. | length'
+$ curl https://raw.githubusercontent.com/ismailbaskin/meb-scraper/master/resmi_kurumlar.json.gz | gunzip -c | jq '. | length'
 ```
 
 kurum, il şeklinde yeniden formatlama
 ```bash
-$ curl https://raw.githubusercontent.com/ismailbaskin/meb-scraper/master/resmi_kurumlar.json | jq '.[] | {kurum: ."Kurum Adı", il: ."İl Adı"}'
+$ curl https://raw.githubusercontent.com/ismailbaskin/meb-scraper/master/resmi_kurumlar.json.gz | gunzip -c | jq '.[] | {kurum: ."Kurum Adı", il: ."İl Adı"}'
 ```
