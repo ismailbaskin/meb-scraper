@@ -37,3 +37,8 @@ kurum, il şeklinde yeniden formatlama
 ```bash
 $ curl https://raw.githubusercontent.com/ismailbaskin/meb-scraper/master/resmi_kurumlar.json.gz | gunzip -c | jq '.[] | {kurum: ."Kurum Adı", il: ."İl Adı"}'
 ```
+
+İstanbul ili Beşiktaş ilçesindeki özel kurumların adları
+```bash
+$ curl https://raw.githubusercontent.com/ismailbaskin/meb-scraper/master/ozel_kurumlar.json.gz | gunzip -c | jq '.[] | select(."İl Adı" | contains("İSTANBUL")) | select(."İlçe Adı" | contains("BEŞİKTAŞ")) | ."Kurum Adı"'
+```
